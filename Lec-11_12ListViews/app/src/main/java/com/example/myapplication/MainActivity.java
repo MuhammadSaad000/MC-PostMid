@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,23 +26,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = findViewById(R.id.tasks);
         ArrayList<String> tasks = new ArrayList<>();
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,tasks);
+
+        listView = findViewById(R.id.tasks);
         tasks.add("Task1 added");
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,tasks);
         listView.setAdapter(arrayAdapter);
 
         textview = findViewById(R.id.editText);
         btnAdd = findViewById(R.id.button);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+        textview.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 tasks.add(textview.getText().toString());
                 arrayAdapter.notifyDataSetChanged();
                 textview.setText("");
-            }
-        });
+                return false;
+            }}
+        );
 
-    }
+
+    };
+
 }
