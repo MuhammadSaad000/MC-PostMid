@@ -27,37 +27,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<String> tasks =  new ArrayList<String>();
-        tasks.add("Task 1 Added");
+        ArrayList<Task> tasks =  new ArrayList<Task>();
+
+        // Creating a data source
+        tasks.add(new Task(R.drawable.hat , "Hat" , "I have to buy this before yesterday"));
+        tasks.add(new Task(R.drawable.calculator , "Calculator" , "I have to return it to Ali"));
 
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-               android.R.layout.simple_list_item_1, tasks);
+
+        TaskAdapter adapter = new TaskAdapter(this,R.layout.listrow,tasks);
 
         listView = (ListView) findViewById(R.id.tasks);
-        textview = (TextView) findViewById(R.id.editText);
+
         listView.setAdapter(adapter);
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String txt = "Item " + (position + 1) + " : " + ((TextView) view).getText().toString() ;
-                Toast toast  = Toast.makeText(MainActivity.this, txt , Toast.LENGTH_LONG);
-                toast.show();
-            }
-        });
-
-
-        textview.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                tasks.add(textview.getText().toString());
-                adapter.notifyDataSetChanged();
-                textview.setText("");
-                return false;
-            }}
-        );
 
 
 
