@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,9 +33,10 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         convertView = layoutInflater.inflate(mResource,parent,false);
 
-        ImageView img = convertView.findViewById(R.id.imageView2);
+        ImageView img = convertView.findViewById(R.id.imageView);
         TextView taskName = convertView.findViewById(R.id.taskHeading);
         TextView taskDet = convertView.findViewById(R.id.taskDet);
+        ImageButton delBtn = convertView.findViewById(R.id.delBtn);
 
         img.setImageResource(getItem(position).getImg());
 
@@ -42,6 +44,12 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 
         taskDet.setText(getItem(position).getTaskDetail());
 
+        delBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         return convertView;
     }

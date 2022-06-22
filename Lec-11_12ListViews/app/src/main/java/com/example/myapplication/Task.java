@@ -2,10 +2,11 @@ package com.example.myapplication;
 
 public class Task {
     int img;
+
     String TaskHeading;
     String TaskDetail;
 
-    public Task(int img, String taskHeading, String taskDetail) {
+    public Task(int img ,String taskHeading, String taskDetail) {
         this.img = img;
         TaskHeading = taskHeading;
         TaskDetail = taskDetail;
@@ -23,6 +24,7 @@ public class Task {
         TaskDetail = taskDetail;
     }
 
+
     public int getImg() {
         return img;
     }
@@ -34,4 +36,5 @@ public class Task {
     public String getTaskDetail() {
         return TaskDetail;
     }
+
 }
