@@ -13,8 +13,8 @@
         android:layout_marginRight="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Add Task Heading"
-        android:textColor="#7C7C7C" />
+        android:hint="Add Task Heading"
+        android:textColor="#ffffff" />
 
     <EditText
         android:id="@+id/AddTaskDetail"
@@ -24,8 +24,8 @@
         android:layout_marginRight="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Add Task Detail"
-        android:textColor="#8C8888" />
+        android:hint="Add Task Detail"
+        android:textColor="#ffffff" />
 
     <Button
         android:id="@+id/addTaskBtn"
